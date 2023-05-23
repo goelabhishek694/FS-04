@@ -125,20 +125,83 @@
 // cricketerInfo('Ms Dhoni', 40);
 
 //rest parameters
-function print(...arr){
-    arr.forEach(cb);
-    function cb(ele) {
-        console.log(ele);
-    }
-}
+// function print(...arr){
+//     arr.forEach(cb);
+//     function cb(ele) {
+//         console.log(ele);
+//     }
+//}
 
-print("hi",'how','are') //arg
-print("hi",'how','are','you')
-print("hi",'how','are','1',2,3,4,5)
-print("hi", 'how', 'are', '1', 2, 3, 4, 5, 6, 7, 8, 9)
+// print("hi",'how','are') //arg
+// print("hi",'how','are','you')
+// print("hi",'how','are','1',2,3,4,5)
+// print("hi", 'how', 'are', '1', 2, 3, 4, 5, 6, 7, 8, 9)
 
 //we do know how many arguments are there in the function, it is going to be dynamic. so we use rest parameter for this 
 
 // func def -> parameters
 // func call-> args
+
+
+//slice [start,end) -> //my fruits arr is not changed
+// const fruits = ['kiwi', 'papaya', 'banana', 'mango', 'apple'];
+// console.log(fruits.slice(1, 4));  //['papaya', 'banana', 'mango']
+// console.log(fruits.slice(2,5)); //['banana', 'mango', 'apple']
+// console.log(fruits.slice(-3)); //['mango', 'apple']
+// console.log(fruits.slice(3)); //['mango', 'apple']
+// console.log(fruits.slice(1, -2)); //['papaya', 'banana']
+// console.log(fruits.slice()); //['kiwi', 'papaya', 'banana', 'mango', 'apple']
+// console.log(fruits); //['kiwi', 'papaya', 'banana', 'mango', 'apple']
+
+// function slice(arr, s, e) {
+//     let arr = [];
+//     if (!s && !e) {
+//         s = 0;
+//         e = arr.length;
+//     }
+//     if (!e) {
+//         e = arr.length;
+//     }
+//     if (s<0) {
+//         s = s + arr.length;
+//     }
+//     if (e < 0) {
+//          e = e + arr.length;
+//     }
+//     if (s > 0 && e > 0) {
+//         // loop and push s to e-1
+//     }
+// }
+
+//splice -> it changes contents of array by removig/replacing/adding elements
+//syntax
+// arr.splice(start, num_of_ele_to_delete, item1_to_add, item2_to_add, ...itemn_to_add);
+
+const cars = ["mustang", "G-Wagon", "Range Rover", "GTR", "Tesla", "Bugatti"];
+
+// console.log(cars.splice(1)); -> start removes the elements from original array 
+//removing from start to end
+// let removedArr = cars.splice(1);
+// console.log(removedArr);
+
+//controlled removing 
+// let removedSUV = cars.splice(1, 2);
+// console.log(removedSUV);
+
+//adding ele in cars arr
+// let removedSUVAddedSportsCar = cars.splice(1, 2, 'Aventador','Maseratti');
+// console.log(removedSUVAddedSportsCar);
+// console.log(cars);
+
+//only adding
+// let addedCars = cars.splice(3, 0, 'Porsche');
+// console.log(addedCars); //[]
+// console.log(cars); //['mustang','G-Wagon','Range Rover','Porsche','GTR','Tesla','Bugatti']
+
+
+let ans = cars.indexOf("GTR");
+console.log(ans);
+
+
+
 
