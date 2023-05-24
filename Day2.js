@@ -199,9 +199,128 @@ const cars = ["mustang", "G-Wagon", "Range Rover", "GTR", "Tesla", "Bugatti"];
 // console.log(cars); //['mustang','G-Wagon','Range Rover','Porsche','GTR','Tesla','Bugatti']
 
 
-let ans = cars.indexOf("GTR");
+// let ans = cars.indexOf("GTR");
+// console.log(ans);
+
+
+// Return Largest Numbers in Arrays
+//-1<-ve<-2000
+// function largestOfFour(twoDArr) {
+//     let largestNum;
+//     let arr = [];
+//     for (let idx = 0; idx < twoDArr.length; idx++){
+//         largestNum = twoDArr[idx][0];
+//         for (let subIdx = 1; subIdx < twoDArr[idx].length; subIdx++){
+//             largestNum = Math.max(largestNum, twoDArr[idx][subIdx]);
+//         }
+//         arr.push(largestNum);
+//         // largestNum = -1;
+//     }
+//     return arr;
+// }
+
+//map/forEach and reduce 
+
+function largestOfFour(twoDArr) {
+    return twoDArr.forEach(arr => {
+        return arr.reduce((acc, cur) => {
+            return cur>acc?cur:acc
+        })
+    })
+}
+
+
+
+let ans=largestOfFour([
+  [13, 27, 18, 26],
+  [4, 5, 1, 3],
+  [32, 35, 37, 39],
+  [1000, 1001, 857, 11],
+]);
+
 console.log(ans);
 
 
+function confirmEnding(str, target) {
+    return str.slice(-target.length) === target;
+}
 
+function confirmEnding(str, target) {
+    let start = str.length - target.length;
+    let subStr=str.substring(start);
+  return subStr === target;
+}
 
+confirmEnding("Bastian", "ian");
+
+function repeatStringNumTimes(str, num) {
+    if (num <= 0) return "";
+    let ans=''
+    for (let i = 0; i < num; i++){
+        ans += str;
+    }
+  return ans;
+}
+
+function repeatStringNumTimes(str, num) {
+if (num <= 0) return "";
+  let ans = [];
+  for (let i = 0; i < num; i++) {
+    ans.push(str);
+  }
+  return ans.join('');
+}
+
+function repeatStringNumTimes(str, num) {
+    if(num<=0) return ''
+    return Array(num).fill(str).join("");
+}
+
+//recursion
+function repeatStringNumTimes(str, num) {
+    let res = '';
+    helper(res, str, num);
+    return res;
+}
+
+function helper(res, str, num) {
+    if(num<1) return ''
+    res = res + str;
+    helper(res, str, num-1);
+}
+
+repeatStringNumTimes("abc", 3);
+
+function truncateString(str, num) {
+    if (num >= str.length) return str;
+  return str.slice(0,num)+'...';
+}
+
+function truncateString(str, num) {
+    //subsring
+}
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+let arr = [10, 20, 30, 40, 50, 60];
+//if atleast one ele passes the test it returns true
+arr.some(evenTest);
+function test(ele) {
+    return ele % 2 == 0;
+}
+
+//if all of the ele passes the test it returns true
+arr.every(greaterThan9);
+function test(ele) {
+    return ele>9;
+}
+
+function findElement(arr, func) {
+  let ans = arr.filter(func);
+  return ans[0];
+}
+
+function findElement(arr, func) {
+    return arr.find(func)
+}
+
+findElement([1, 2, 3, 4], (num) => num % 2 === 0);
