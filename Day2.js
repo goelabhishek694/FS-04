@@ -324,3 +324,144 @@ function findElement(arr, func) {
 }
 
 findElement([1, 2, 3, 4], (num) => num % 2 === 0);
+
+function titleCase(str) {
+//toLowerCase
+  str = str.toLowerCase();
+  //split
+  let strArr=str.split(' ');
+  //for
+  for (let idx = 0; idx < strArr.length; idx++){
+    let word = strArr[idx];
+    let firstLetter = word[0].toUpperCase();
+    let restOfWord = word.slice(1);
+    strArr[idx] = firstLetter + restOfWord;
+  }
+  //map/forEach
+  return strArr.join(' ');
+}
+
+function titleCase(str) {
+  //toLowerCase
+  str = str.toLowerCase();
+  //split
+  let strArr = str.split(" ");
+  //for
+  strArr.map((word) => {
+    let firstLetter = word[0].toUpperCase();
+    let restOfWord = word.slice(1);
+    strArr[idx] = firstLetter + restOfWord;
+  })
+    
+  
+  //map
+  return strArr.join(" ");
+}
+
+function titleCase(str) {
+  //toLowerCase
+  str = str.toLowerCase();
+  //split
+  let strArr = str.split(" ");
+  let ans = '';
+  //for
+  strArr.forEach((word) => {
+    let firstLetter = word[0].toUpperCase();
+    let restOfWord = word.slice(1);
+    ans = ans+firstLetter + restOfWord + ' ';
+  });
+
+  //map
+  return ans.trim();
+}
+
+let ans1 = titleCase("I'm a little tea pot");
+console.log(ans1);
+
+function frankenSplice(arr1, arr2, n) {
+  let newArr = arr2.slice();
+  console.log(newArr);
+  newArr.splice(n, 0, ...arr1);
+  console.log(newArr);
+  return newArr;
+}
+
+function frankenSplice(arr1, arr2, n) {
+  let leftArr = arr2.slice(0,n);
+  let rightArr = arr2.slice(n);
+  let newArr = [...leftArr, ...arr1, ...rightArr];
+  // console.log(newArr);
+  // newArr.splice(n, 0, ...arr1);
+  // console.log(newArr);
+  return newArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+function bouncer(arr) {
+  return arr.filter(ele=>Boolean(ele))
+}
+
+console.log(bouncer([7, "ate", "", false, 9]));
+
+
+function getIndexToIns(arr, num) {
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] >= num) {
+      return i;
+    }
+  }
+  return arr.length;
+}
+
+function getIndexToIns(arr, num) {
+  return arr.filter(ele=>ele<num).length //[10,20,30]
+}
+
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort((a, b) => a - b);
+  return arr.indexOf(num);
+}
+
+getIndexToIns([10, 20, 30, 40, 50], 35);
+
+
+function mutation(arr) {
+  let testString = arr[0].toLowerCase();
+  let targetString = arr[1].toLowerCase();
+  for (let i = 0; i < targetString.length; i++){
+    let char = targetString[i];
+    if (testString.indexOf(char) == -1) return false;
+  }
+  return true;
+}
+
+mutation(["hello", "hey"]);
+
+
+
+
+
+
+
+//map-> traverse + returns array of the same length as of original array always
+// let abc = [1, 2, 3, 4];
+// abc.map(ele => {
+//   return ele * 10;
+// }
+//   return ans;
+
+//forEach->traverse only, does not return anything 
+  // let ans = [];
+  // abc.forEach(ele => {
+  //   abc.push(ele * 10);
+  //   })
+
+  // return ans;
+
+
+
+
+
