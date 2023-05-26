@@ -177,271 +177,293 @@
 //syntax
 // arr.splice(start, num_of_ele_to_delete, item1_to_add, item2_to_add, ...itemn_to_add);
 
-const cars = ["mustang", "G-Wagon", "Range Rover", "GTR", "Tesla", "Bugatti"];
+// const cars = ["mustang", "G-Wagon", "Range Rover", "GTR", "Tesla", "Bugatti"];
 
-// console.log(cars.splice(1)); -> start removes the elements from original array 
-//removing from start to end
-// let removedArr = cars.splice(1);
-// console.log(removedArr);
+// // console.log(cars.splice(1)); -> start removes the elements from original array 
+// //removing from start to end
+// // let removedArr = cars.splice(1);
+// // console.log(removedArr);
 
-//controlled removing 
-// let removedSUV = cars.splice(1, 2);
-// console.log(removedSUV);
+// //controlled removing 
+// // let removedSUV = cars.splice(1, 2);
+// // console.log(removedSUV);
 
-//adding ele in cars arr
-// let removedSUVAddedSportsCar = cars.splice(1, 2, 'Aventador','Maseratti');
-// console.log(removedSUVAddedSportsCar);
-// console.log(cars);
+// //adding ele in cars arr
+// // let removedSUVAddedSportsCar = cars.splice(1, 2, 'Aventador','Maseratti');
+// // console.log(removedSUVAddedSportsCar);
+// // console.log(cars);
 
-//only adding
-// let addedCars = cars.splice(3, 0, 'Porsche');
-// console.log(addedCars); //[]
-// console.log(cars); //['mustang','G-Wagon','Range Rover','Porsche','GTR','Tesla','Bugatti']
+// //only adding
+// // let addedCars = cars.splice(3, 0, 'Porsche');
+// // console.log(addedCars); //[]
+// // console.log(cars); //['mustang','G-Wagon','Range Rover','Porsche','GTR','Tesla','Bugatti']
 
 
-// let ans = cars.indexOf("GTR");
+// // let ans = cars.indexOf("GTR");
+// // console.log(ans);
+
+
+// // Return Largest Numbers in Arrays
+// //-1<-ve<-2000
+// // function largestOfFour(twoDArr) {
+// //     let largestNum;
+// //     let arr = [];
+// //     for (let idx = 0; idx < twoDArr.length; idx++){
+// //         largestNum = twoDArr[idx][0];
+// //         for (let subIdx = 1; subIdx < twoDArr[idx].length; subIdx++){
+// //             largestNum = Math.max(largestNum, twoDArr[idx][subIdx]);
+// //         }
+// //         arr.push(largestNum);
+// //         // largestNum = -1;
+// //     }
+// //     return arr;
+// // }
+
+// //map/forEach and reduce 
+
+// function largestOfFour(twoDArr) {
+//     return twoDArr.forEach(arr => {
+//         return arr.reduce((acc, cur) => {
+//             return cur>acc?cur:acc
+//         })
+//     })
+// }
+
+
+
+// let ans=largestOfFour([
+//   [13, 27, 18, 26],
+//   [4, 5, 1, 3],
+//   [32, 35, 37, 39],
+//   [1000, 1001, 857, 11],
+// ]);
+
 // console.log(ans);
 
 
-// Return Largest Numbers in Arrays
-//-1<-ve<-2000
-// function largestOfFour(twoDArr) {
-//     let largestNum;
-//     let arr = [];
-//     for (let idx = 0; idx < twoDArr.length; idx++){
-//         largestNum = twoDArr[idx][0];
-//         for (let subIdx = 1; subIdx < twoDArr[idx].length; subIdx++){
-//             largestNum = Math.max(largestNum, twoDArr[idx][subIdx]);
-//         }
-//         arr.push(largestNum);
-//         // largestNum = -1;
-//     }
-//     return arr;
+// function confirmEnding(str, target) {
+//     return str.slice(-target.length) === target;
 // }
 
-//map/forEach and reduce 
+// function confirmEnding(str, target) {
+//     let start = str.length - target.length;
+//     let subStr=str.substring(start);
+//   return subStr === target;
+// }
 
-function largestOfFour(twoDArr) {
-    return twoDArr.forEach(arr => {
-        return arr.reduce((acc, cur) => {
-            return cur>acc?cur:acc
-        })
-    })
-}
+// confirmEnding("Bastian", "ian");
 
+// function repeatStringNumTimes(str, num) {
+//     if (num <= 0) return "";
+//     let ans=''
+//     for (let i = 0; i < num; i++){
+//         ans += str;
+//     }
+//   return ans;
+// }
 
+// function repeatStringNumTimes(str, num) {
+// if (num <= 0) return "";
+//   let ans = [];
+//   for (let i = 0; i < num; i++) {
+//     ans.push(str);
+//   }
+//   return ans.join('');
+// }
 
-let ans=largestOfFour([
-  [13, 27, 18, 26],
-  [4, 5, 1, 3],
-  [32, 35, 37, 39],
-  [1000, 1001, 857, 11],
-]);
+// function repeatStringNumTimes(str, num) {
+//     if(num<=0) return ''
+//     return Array(num).fill(str).join("");
+// }
 
-console.log(ans);
+// //recursion
+// function repeatStringNumTimes(str, num) {
+//     let res = '';
+//     helper(res, str, num);
+//     return res;
+// }
 
+// function helper(res, str, num) {
+//     if(num<1) return ''
+//     res = res + str;
+//     helper(res, str, num-1);
+// }
 
-function confirmEnding(str, target) {
-    return str.slice(-target.length) === target;
-}
+// repeatStringNumTimes("abc", 3);
 
-function confirmEnding(str, target) {
-    let start = str.length - target.length;
-    let subStr=str.substring(start);
-  return subStr === target;
-}
+// function truncateString(str, num) {
+//     if (num >= str.length) return str;
+//   return str.slice(0,num)+'...';
+// }
 
-confirmEnding("Bastian", "ian");
+// function truncateString(str, num) {
+//     //subsring
+// }
+// truncateString("A-tisket a-tasket A green and yellow basket", 8);
 
-function repeatStringNumTimes(str, num) {
-    if (num <= 0) return "";
-    let ans=''
-    for (let i = 0; i < num; i++){
-        ans += str;
-    }
-  return ans;
-}
+// let arr = [10, 20, 30, 40, 50, 60];
+// //if atleast one ele passes the test it returns true
+// arr.some(evenTest);
+// function test(ele) {
+//     return ele % 2 == 0;
+// }
 
-function repeatStringNumTimes(str, num) {
-if (num <= 0) return "";
-  let ans = [];
-  for (let i = 0; i < num; i++) {
-    ans.push(str);
-  }
-  return ans.join('');
-}
+// //if all of the ele passes the test it returns true
+// arr.every(greaterThan9);
+// function test(ele) {
+//     return ele>9;
+// }
 
-function repeatStringNumTimes(str, num) {
-    if(num<=0) return ''
-    return Array(num).fill(str).join("");
-}
+// function findElement(arr, func) {
+//   let ans = arr.filter(func);
+//   return ans[0];
+// }
 
-//recursion
-function repeatStringNumTimes(str, num) {
-    let res = '';
-    helper(res, str, num);
-    return res;
-}
+// function findElement(arr, func) {
+//     return arr.find(func)
+// }
 
-function helper(res, str, num) {
-    if(num<1) return ''
-    res = res + str;
-    helper(res, str, num-1);
-}
+// findElement([1, 2, 3, 4], (num) => num % 2 === 0);
 
-repeatStringNumTimes("abc", 3);
+// function titleCase(str) {
+// //toLowerCase
+//   str = str.toLowerCase();
+//   //split
+//   let strArr=str.split(' ');
+//   //for
+//   for (let idx = 0; idx < strArr.length; idx++){
+//     let word = strArr[idx];
+//     let firstLetter = word[0].toUpperCase();
+//     let restOfWord = word.slice(1);
+//     strArr[idx] = firstLetter + restOfWord;
+//   }
+//   //map/forEach
+//   return strArr.join(' ');
+// }
 
-function truncateString(str, num) {
-    if (num >= str.length) return str;
-  return str.slice(0,num)+'...';
-}
-
-function truncateString(str, num) {
-    //subsring
-}
-truncateString("A-tisket a-tasket A green and yellow basket", 8);
-
-let arr = [10, 20, 30, 40, 50, 60];
-//if atleast one ele passes the test it returns true
-arr.some(evenTest);
-function test(ele) {
-    return ele % 2 == 0;
-}
-
-//if all of the ele passes the test it returns true
-arr.every(greaterThan9);
-function test(ele) {
-    return ele>9;
-}
-
-function findElement(arr, func) {
-  let ans = arr.filter(func);
-  return ans[0];
-}
-
-function findElement(arr, func) {
-    return arr.find(func)
-}
-
-findElement([1, 2, 3, 4], (num) => num % 2 === 0);
-
-function titleCase(str) {
-//toLowerCase
-  str = str.toLowerCase();
-  //split
-  let strArr=str.split(' ');
-  //for
-  for (let idx = 0; idx < strArr.length; idx++){
-    let word = strArr[idx];
-    let firstLetter = word[0].toUpperCase();
-    let restOfWord = word.slice(1);
-    strArr[idx] = firstLetter + restOfWord;
-  }
-  //map/forEach
-  return strArr.join(' ');
-}
-
-function titleCase(str) {
-  //toLowerCase
-  str = str.toLowerCase();
-  //split
-  let strArr = str.split(" ");
-  //for
-  strArr.map((word) => {
-    let firstLetter = word[0].toUpperCase();
-    let restOfWord = word.slice(1);
-    strArr[idx] = firstLetter + restOfWord;
-  })
+// function titleCase(str) {
+//   //toLowerCase
+//   str = str.toLowerCase();
+//   //split
+//   let strArr = str.split(" ");
+//   //for
+//   strArr.map((word) => {
+//     let firstLetter = word[0].toUpperCase();
+//     let restOfWord = word.slice(1);
+//     strArr[idx] = firstLetter + restOfWord;
+//   })
     
   
-  //map
-  return strArr.join(" ");
-}
+//   //map
+//   return strArr.join(" ");
+// }
 
-function titleCase(str) {
-  //toLowerCase
-  str = str.toLowerCase();
-  //split
-  let strArr = str.split(" ");
-  let ans = '';
-  //for
-  strArr.forEach((word) => {
-    let firstLetter = word[0].toUpperCase();
-    let restOfWord = word.slice(1);
-    ans = ans+firstLetter + restOfWord + ' ';
-  });
+// function titleCase(str) {
+//   //toLowerCase
+//   str = str.toLowerCase();
+//   //split
+//   let strArr = str.split(" ");
+//   let ans = '';
+//   //for
+//   strArr.forEach((word) => {
+//     let firstLetter = word[0].toUpperCase();
+//     let restOfWord = word.slice(1);
+//     ans = ans+firstLetter + restOfWord + ' ';
+//   });
 
-  //map
-  return ans.trim();
-}
+//   //map
+//   return ans.trim();
+// }
 
-let ans1 = titleCase("I'm a little tea pot");
-console.log(ans1);
+// let ans1 = titleCase("I'm a little tea pot");
+// console.log(ans1);
 
-function frankenSplice(arr1, arr2, n) {
-  let newArr = arr2.slice();
-  console.log(newArr);
-  newArr.splice(n, 0, ...arr1);
-  console.log(newArr);
-  return newArr;
-}
+// function frankenSplice(arr1, arr2, n) {
+//   let newArr = arr2.slice();
+//   console.log(newArr);
+//   newArr.splice(n, 0, ...arr1);
+//   console.log(newArr);
+//   return newArr;
+// }
 
-function frankenSplice(arr1, arr2, n) {
-  let leftArr = arr2.slice(0,n);
-  let rightArr = arr2.slice(n);
-  let newArr = [...leftArr, ...arr1, ...rightArr];
-  // console.log(newArr);
-  // newArr.splice(n, 0, ...arr1);
-  // console.log(newArr);
-  return newArr;
-}
+// function frankenSplice(arr1, arr2, n) {
+//   let leftArr = arr2.slice(0,n);
+//   let rightArr = arr2.slice(n);
+//   let newArr = [...leftArr, ...arr1, ...rightArr];
+//   // console.log(newArr);
+//   // newArr.splice(n, 0, ...arr1);
+//   // console.log(newArr);
+//   return newArr;
+// }
 
-frankenSplice([1, 2, 3], [4, 5, 6], 1);
+// frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
-function bouncer(arr) {
-  return arr.filter(ele=>Boolean(ele))
-}
+// function bouncer(arr) {
+//   return arr.filter(ele=>Boolean(ele))
+// }
 
-console.log(bouncer([7, "ate", "", false, 9]));
-
-
-function getIndexToIns(arr, num) {
-  arr.sort((a, b) => a - b);
-  for (let i = 0; i < arr.length; i++){
-    if (arr[i] >= num) {
-      return i;
-    }
-  }
-  return arr.length;
-}
-
-function getIndexToIns(arr, num) {
-  return arr.filter(ele=>ele<num).length //[10,20,30]
-}
-
-function getIndexToIns(arr, num) {
-  arr.push(num);
-  arr.sort((a, b) => a - b);
-  return arr.indexOf(num);
-}
-
-getIndexToIns([10, 20, 30, 40, 50], 35);
+// console.log(bouncer([7, "ate", "", false, 9]));
 
 
-function mutation(arr) {
-  let testString = arr[0].toLowerCase();
-  let targetString = arr[1].toLowerCase();
-  for (let i = 0; i < targetString.length; i++){
-    let char = targetString[i];
-    if (testString.indexOf(char) == -1) return false;
-  }
-  return true;
-}
+// function getIndexToIns(arr, num) {
+//   arr.sort((a, b) => a - b);
+//   for (let i = 0; i < arr.length; i++){
+//     if (arr[i] >= num) {
+//       return i;
+//     }
+//   }
+//   return arr.length;
+// }
 
-mutation(["hello", "hey"]);
+// function getIndexToIns(arr, num) {
+//   return arr.filter(ele=>ele<num).length //[10,20,30]
+// }
+
+// function getIndexToIns(arr, num) {
+//   arr.push(num);
+//   arr.sort((a, b) => a - b);
+//   return arr.indexOf(num);
+// }
+
+// getIndexToIns([10, 20, 30, 40, 50], 35);
 
 
+// function mutation(arr) {
+//   let testString = arr[0].toLowerCase();
+//   let targetString = arr[1].toLowerCase();
+//   for (let i = 0; i < targetString.length; i++){
+//     let char = targetString[i];
+//     if (testString.indexOf(char) == -1) return false;
+//   }
+//   return true;
+// }
 
+// mutation(["hello", "hey"]);
+
+// function sumAll(arr) {
+//   let s = Math.min(arr[0], arr[1]); //1
+//   let b = Math.max(arr[0], arr[1]); //4
+//   let sum = 0; //10
+//   for (let i = s; i <= b; i++){
+//     sum = sum + i;
+//   }
+//   return sum;
+// }
+
+// function sumAll(arr) {
+//   let newArr = [];
+//   let s = Math.min(arr[0], arr[1]); //1
+//   let b = Math.max(arr[0], arr[1]); //4
+//   for (let i = s; i <= b; i++) {
+//     newArr.push(i);
+//   }
+
+//   return newArr.reduce((acc, curr) => {
+//     return acc + curr;
+//   }, 0)
+// }
+
+// sumAll([1, 4]);
 
 
 
@@ -460,6 +482,105 @@ mutation(["hello", "hey"]);
   //   })
 
   // return ans;
+
+//HOF-> when function accepts another function as an argument then that function is known as HOF
+//conveert dollar to inr
+// let bankStatement = [15, 22, 32, 42];
+// let bankStatementInINR = bankStatement.map((numInDollar) => {
+//   return numInDollar * 85;
+// });
+// console.log(bankStatementInINR);
+// console.log(bankStatement);
+
+// //save the payments in db 
+// let res = bankStatement.forEach((num) => {
+//   console.log(num); //db.save(num)
+//   return num * 85;
+// });
+// console.log(res);
+
+// //total in bank account
+// let totalBalanceInDollar = bankStatement.reduce((acc, curr) => acc + curr);
+// console.log(totalBalanceInDollar);
+
+// let totalBalanceInINR = .reduce((acc, curr) => acc + curr);
+// console.log(totalBalanceInINR);
+
+// let numArr = [1, 2, 3, 4, 5];
+
+// //sum of array 
+// let sum = 0;
+// for (let i = 0; i < numArr.length; i++){
+//   sum = sum + numArr[i];
+// }
+// console.log(sum);
+// //accumulator=>arr[0], currrent value in arr=>arr[1]
+// let ans = numArr.reduce((acc, curr) => {
+//   console.log('acc -> ', acc);
+//   console.log('curr -> ', curr);
+//   acc = acc + curr
+//   return acc;
+// });
+// console.log(ans);
+
+// //accumulator=>initial value, currrent value in arr=>arr[0]
+// let ans1 = numArr.reduce((acc, curr) => {
+//   console.log("acc -> ", acc);
+//   console.log("curr -> ", curr);
+//   acc = acc + curr;
+//   return acc;
+// }, 100); //initial value of acc
+// console.log(ans1);
+
+let arrOfObj = [{ x: 10 }, { x: 20 }, { x: 30 }] //{x:60}
+let val=arrOfObj.reduce((acc, curr) => {
+  acc['x'] = curr['x'];
+  if (acc['x']) {
+    acc['x']=acc['x']+curr['x']
+  }
+  return acc;
+},{})
+console.log(val);
+
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  for (let ele of arr1) {
+    if (!arr2.includes(ele)) newArr.push(ele);
+  }
+  for (let ele of arr2) {
+    if (!arr1.includes(ele)) newArr.push(ele);
+  }
+  // console.log(newArr);
+  return newArr;
+}
+
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  let a=arr1.filter(ele=>!arr2.includes(ele))
+  let b = arr2.filter(ele => !arr1.includes(ele))
+  newArr = [...a, ...b];
+  // console.log(newArr);
+  return newArr;
+}
+
+function destroyer(...arr) {
+  let [repeatedArr, ...args] = arr;
+  console.log(repeatedArr);
+  console.log(args);
+  args.forEach((ele) => {
+    repeatedArr.filter((num) => num != ele);
+  });
+  return arr;
+}
+
+
+
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+
+
+
 
 
 
