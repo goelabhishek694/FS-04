@@ -7,3 +7,7 @@ https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/bas
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+27/05/2023
+
+https://www.freecodecamp.org/news/regular-expressions-for-beginners/

@@ -563,25 +563,70 @@ function diffArray(arr1, arr2) {
   return newArr;
 }
 
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
 function destroyer(...arr) {
   let [repeatedArr, ...args] = arr;
   console.log(repeatedArr);
   console.log(args);
   args.forEach((ele) => {
-    repeatedArr.filter((num) => num != ele);
+    repeatedArr.filter((num) => num !== ele);
   });
-  return arr;
+  return repeatedArr;
 }
 
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+function whatIsInAName(collection, source) {
+  let res=[]
+  res=collection.filter(obj => {
+    for (let key in source) {
+      // console.log(key);
+      // console.log(source[key]);
+      if (!obj.hasOwnProperty(key) || obj[key] !== source[key]) {
+        return false;
+      }
+    }
+    return true;
+  })
+  return res;
+}
+
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" },
+  ],
+  { last: "Capulet" }
+);
+
+function spinalCase(str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/\s+|_+/g, "-")
+    .toLowerCase();
+}
+
+spinalCase("This Is Spinal Tap");
 
 
+function translatePigLatin(str) {
+  let vowelArr = ["a", "e", "i", "o", "u"];
+  let partitionIdx = str.length;
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (vowelArr.includes(char)) {
+      partitionIdx = i;
+      break;
+    }
+  }
+  let vowelStr = str.slice(partitionIdx); //eaker
+  let consStr = str.slice(0, partitionIdx); //sp
+  return partitionIdx == 0 ? str + "way" : vowelStr + consStr + "ay";
+}
 
-diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
-
-
-
-
-
+translatePigLatin("consonant");
 
 
 
