@@ -485,28 +485,28 @@
 
 //HOF-> when function accepts another function as an argument then that function is known as HOF
 //conveert dollar to inr
-// let bankStatement = [15, 22, 32, 42];
-// let bankStatementInINR = bankStatement.map((numInDollar) => {
-//   return numInDollar * 85;
-// });
-// console.log(bankStatementInINR);
-// console.log(bankStatement);
+let bankStatement = [15, 22, 32, 42,-12,-13];
+let bankStatementInINR = bankStatement.map((numInDollar) => {
+  return numInDollar * 85;
+});
+console.log(bankStatementInINR);
+console.log(bankStatement);
 
-// //save the payments in db 
-// let res = bankStatement.forEach((num) => {
-//   console.log(num); //db.save(num)
-//   return num * 85;
-// });
-// console.log(res);
+//save the payments in db 
+let res = bankStatement.forEach((num) => {
+  console.log(num); //db.save(num)
+  return num * 85;
+});
+console.log(res);
 
-// //total in bank account
-// let totalBalanceInDollar = bankStatement.reduce((acc, curr) => acc + curr);
-// console.log(totalBalanceInDollar);
+//total in bank account
+let totalBalanceInDollar = bankStatement.reduce((acc, curr) => acc + curr);
+console.log(totalBalanceInDollar);
 
-// let totalBalanceInINR = .reduce((acc, curr) => acc + curr);
-// console.log(totalBalanceInINR);
+let totalBalanceInINR = bankStatementInINR.reduce((acc, curr) => acc + curr);
+console.log(totalBalanceInINR);
 
-// let numArr = [1, 2, 3, 4, 5];
+let numArr = [1, 2, 3, 4, 5];
 
 // //sum of array 
 // let sum = 0;
@@ -555,7 +555,7 @@ function diffArray(arr1, arr2) {
 }
 
 function diffArray(arr1, arr2) {
-  const newArr = [];
+  let newArr = [];
   let a=arr1.filter(ele=>!arr2.includes(ele))
   let b = arr2.filter(ele => !arr1.includes(ele))
   newArr = [...a, ...b];
@@ -627,6 +627,13 @@ function translatePigLatin(str) {
 }
 
 translatePigLatin("consonant");
+
+(() => {
+  console.log("hello")
+})();
+
+
+
 
 
 

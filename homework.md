@@ -11,3 +11,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 27/05/2023
 
 https://www.freecodecamp.org/news/regular-expressions-for-beginners/
+
+
+29/05/2023
+
+https://javascript.info/localstorage
