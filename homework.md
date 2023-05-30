@@ -16,3 +16,7 @@ https://www.freecodecamp.org/news/regular-expressions-for-beginners/
 29/05/2023
 
 https://javascript.info/localstorage
+
+30/05/2023
+
+https://docs.google.com/document/d/1nySZjqYERods4kQA8hMuYn9M-Cg7u0h1alT1GBjDTHU/edit
