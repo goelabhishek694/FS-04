@@ -125,7 +125,7 @@
 //     //   resolve(val); //instantly resolved promise
 //     // });
 //     // return addTenPromise;
-//       return val;
+//       // return val;
 //   })
 //   .then((res) => {
 //     let val = res + 10;
@@ -237,7 +237,7 @@
 // });
 
 
-//promise API 
+//promise API/methods
 //promise.all -> it waits for all the promises to be executed in parallel. promise.all will only be resolved if all of the listed promises are resolved. all of the promises resolved with value will be placed in a result array in repective manner promises were placed. 
 //if any of the listed promise gets rejected then the result of promise.all will be that error
 //all or nothing 
@@ -308,33 +308,123 @@
 // let p2 = Promise.resolve("hello");
 
 
-let urls = [
-  "https://api.github.com/users/goelabhishek694",
-  "https://api.github.com/users/ramesh1234chaudhary",
-  "https://api.github.com/users/bhi2710",
-  "https://api.github.com/users/sonukumar77",
-  "https://api.github.com/users/saumya-bisht",
-  "https://api.github.com/users/venky123895",
-  "https://api.github.com/users/nidhirathour",
-  "https://api.github.com/users/debashish7862",
-  "https://api.github.com/users/rajnikant-raghav",
-];
+// let urls = [
+//   "https://api.github123.com/users123/goelabhishek694",
+//   "https://api.github.com/users/ramesh1234chaudhary",
+//   "https://api.github.com/users/bhi2710",
+//   "https://api.github.com/users/sonukumar77",
+//   "https://api.github.com/users/saumya-bisht",
+//   "https://api.github.com/users/venky123895",
+//   "https://api.github.com/users/nidhirathour",
+//   "https://api.github.com/users/debashish7862",
+//   "https://api.github.com/users/rajnikant-raghav",
+// ];
 
 //go and get avatar url of all these users
 
-let promiseUrl = urls.map(url => fetch(url));
+// let promiseUrl = urls.map(url => fetch(url));
 
-let promiseData = Promise.allSettled(promiseUrl);
-
-promiseData.then((data) => {
-  console.log(data) //aray of objects
-  let userData = data.map(promiseObj => promiseObj.value.json());
-  return userData;
-})
-  .then((userData) => {
-    console.log(userData)
-  })
-
+// let promiseData = Promise.allSettled(promiseUrl);
+// let failedRequests = [];
+// promiseData
+//   .then((data) => {
+//     console.log(data); //aray of objects
+//     let userData = data.filter((promiseObj) => {
+//       if (promiseObj.status == "fulfilled") {
+//         return promiseObj;
+//       } else failedRequests.push(promiseObj);
+//     });
+//     return userData;
+//   })
+//   .then((userData) => {
+//     console.log(userData);
+//     userData=userData.map((user) => user.value.json());
+//     return Promise.all(userData);
+//   })
+//   .then((userData) => {
+//     console.log(userData);
+//     userData.map((user) => {
+//       let img = document.createElement("img");
+//       let url = user.avatar_url;
+//       img.src = url;
+//       img.style.height = "300px";
+//       img.style.width = "300px";
+//       img.style.borderRadius = "50%";
+//       console.log(document);
+//       document.body.append(img);
+//       setTimeout(() => img.remove(), 4000);
+//     });
+//   })
+//   .catch((err) => console.log(err))
+//   .finally(() => {
+//     console.log(failedRequests);
+//   });
+//try catch finally 
+//then catch finally 
 
 //async await 
 
+// async function foo() {
+//   return 1;
+// }
+
+// let ans = foo();
+// console.log(ans);
+// ans.then(res => console.log(res));
+
+// async function foo() {
+//   let p = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(100), 2000);
+//   });
+//   let res = await p; // execution stops at that line and only resumes when promise has been settled 
+//   console.log(res);
+//   return res;
+// }
+//await keyword can only be used inside async function
+//codeoputside the function would be executed as usual , it wont be affected from await keyword inside a function. only that function's execution is suspended in which await keyword is used. 
+
+// let ans = foo();
+// ans.then(res => console.log(res));
+
+// let ans = await foo();
+// console.log(ans); //await is only valid in async functions and the top level bodies of modules
+// promise.then(res => console.log(res));
+
+
+let username='itsShubhamShinde'
+let githubAPI = `https://api.github.com/users/${username}`
+
+async function getAvatarURL(githubAPI) {
+  let req = await fetch(githubAPI);
+  let data = await req.json();
+  console.log(data);
+  let img = document.createElement("img");
+  let url = data.avatar_url;
+  img.src = url;
+  img.style.height = "300px";
+  img.style.width = "300px";
+  img.style.borderRadius = "50%";
+  console.log(document);
+  document.body.append(img);
+  setTimeout(() => img.remove(), 4000);
+}
+
+// getAvatarURL(githubAPI);
+
+//error handling in reject
+async function foo() {
+  try {
+    let p = new Promise((resolve, reject) => {
+    setTimeout(() => reject('error received'), 2000);
+    });
+    let res = await p; // execution stops at that line and only resumes when promise has been settled
+    console.log(res);
+    return res;
+  }
+  catch (err) {
+    console.log(err)
+  }
+  
+}
+
+foo()
