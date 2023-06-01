@@ -391,59 +391,76 @@
 // promise.then(res => console.log(res));
 
 
-let username='itsShubhamShinde'
-let githubAPI = `https://api.github.com/users/${username}`
+// let username='itsShubhamShinde'
+// let githubAPI = `https://api.github.com/users/${username}`
 
-async function getAvatarURL(githubAPI) {
-  let req = await fetch(githubAPI);
-  let data = await req.json();
-  console.log(data);
-  let img = document.createElement("img");
-  let url = data.avatar_url;
-  img.src = url;
-  img.style.height = "300px";
-  img.style.width = "300px";
-  img.style.borderRadius = "50%";
-  console.log(document);
-  document.body.append(img);
-  setTimeout(() => img.remove(), 4000);
+// async function getAvatarURL(githubAPI) {
+//   let req = await fetch(githubAPI);
+//   let data = await req.json();
+//   console.log(data);
+//   let img = document.createElement("img");
+//   let url = data.avatar_url;
+//   img.src = url;
+//   img.style.height = "300px";
+//   img.style.width = "300px";
+//   img.style.borderRadius = "50%";
+//   console.log(document);
+//   document.body.append(img);
+//   setTimeout(() => img.remove(), 4000);
+// }
+
+// // getAvatarURL(githubAPI);
+
+// //error handling in reject
+// async function foo() {
+//   try {
+//     let p = new Promise((resolve, reject) => {
+//     setTimeout(() => reject('error received'), 2000);
+//     });
+//     let res = await p; // execution stops at that line and only resumes when promise has been settled
+//     console.log(res);
+//     return res;
+//   }
+//   catch (err) {
+//     console.log(err)
+//   }
+// }
+
+// // foo()
+
+
+// function fun() {
+//   try {
+//     const a=10;
+//     a = 20;
+//     return a
+//   }
+//   catch (err) {
+//     console.log(err);
+//     return err
+//   }
+// }
+
+// let ans = fun()
+// console.log(ans);
+
+// for (let i = 0; i < 5; i++){
+//   console.log(i);
+// }
+
+//shallow copy 
+let userObj = {
+  name: 'Abhishek',
+  age: 22,
+  address: {
+    state: 'delhi',
+    city:'new delhi'
+  }
 }
 
-// getAvatarURL(githubAPI);
+console.log(userObj);
+let user2 = userObj;
+user2.name = 'Arbaz'
+console.log(user2);
 
-//error handling in reject
-async function foo() {
-  try {
-    let p = new Promise((resolve, reject) => {
-    setTimeout(() => reject('error received'), 2000);
-    });
-    let res = await p; // execution stops at that line and only resumes when promise has been settled
-    console.log(res);
-    return res;
-  }
-  catch (err) {
-    console.log(err)
-  }
-}
-
-// foo()
-
-
-function fun() {
-  try {
-    const a=10;
-    a = 20;
-    return a
-  }
-  catch (err) {
-    console.log(err);
-    return err
-  }
-}
-
-let ans = fun()
-console.log(ans);
-
-for (let i = 0; i < 5; i++){
-  console.log(i);
-}
+//objects are passed by refereence . user2 is shallow copy 
