@@ -424,7 +424,26 @@ async function foo() {
   catch (err) {
     console.log(err)
   }
-  
 }
 
-foo()
+// foo()
+
+
+function fun() {
+  try {
+    const a=10;
+    a = 20;
+    return a
+  }
+  catch (err) {
+    console.log(err);
+    return err
+  }
+}
+
+let ans = fun()
+console.log(ans);
+
+for (let i = 0; i < 5; i++){
+  console.log(i);
+}
