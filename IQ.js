@@ -448,19 +448,44 @@
 //   console.log(i);
 // }
 
-//shallow copy 
 let userObj = {
   name: 'Abhishek',
   age: 22,
   address: {
     state: 'delhi',
-    city:'new delhi'
+    city:'new delhi',
+    greet: function () {
+      console.log('hello Geeksters')
+    }
   }
 }
 
 console.log(userObj);
-let user2 = userObj;
-user2.name = 'Arbaz'
-console.log(user2);
+// let user2 = userObj;
+// user2.name = 'Arbaz'
+// console.log(user2);
 
-//objects are passed by refereence . user2 is shallow copy 
+//objects are passed by refereence. user2 is a reference of userObj
+
+//shallow copy -> only the first level of the object is copied. deeper levels are referenced
+//1. spread operator 
+// const shallowObj = { ...userObj };
+// shallowObj.name = 'Arbaz';
+// shallowObj.address.state = 'Chennai';
+// console.log(shallowObj);
+
+//2. Object.assign() -> MDN  //Object.freeze()
+// const shallowObj = Object.assign(userObj);
+// shallowObj.name = 'Arbaz';
+// shallowObj.address.state = 'Goa';
+// console.log(shallowObj);
+
+//deep copy
+//when all the levels of keys are copied it is know as deep copy
+const deepObj = JSON.parse(JSON.stringify(userObj));
+//cons-> if your obj contains a function , then function cannot will not be copied
+deepObj.name = "Arbaz";
+deepObj.address.state = "Karnataka";
+console.log(deepObj);
+
+
