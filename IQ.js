@@ -448,19 +448,19 @@
 //   console.log(i);
 // }
 
-let userObj = {
-  name: 'Abhishek',
-  age: 22,
-  address: {
-    state: 'delhi',
-    city:'new delhi',
-    greet: function () {
-      console.log('hello Geeksters')
-    }
-  }
-}
+// let userObj = {
+//   name: 'Abhishek',
+//   age: 22,
+//   address: {
+//     state: 'delhi',
+//     city:'new delhi',
+//     greet: function () {
+//       console.log('hello Geeksters')
+//     }
+//   }
+// }
 
-console.log(userObj);
+// console.log(userObj);
 // let user2 = userObj;
 // user2.name = 'Arbaz'
 // console.log(user2);
@@ -482,10 +482,84 @@ console.log(userObj);
 
 //deep copy
 //when all the levels of keys are copied it is know as deep copy
-const deepObj = JSON.parse(JSON.stringify(userObj));
-//cons-> if your obj contains a function , then function cannot will not be copied
-deepObj.name = "Arbaz";
-deepObj.address.state = "Karnataka";
-console.log(deepObj);
+// const deepObj = JSON.parse(JSON.stringify(userObj));
+// //cons-> if your obj contains a function , then function cannot will not be copied
+// deepObj.name = "Arbaz";
+// deepObj.address.state = "Karnataka";
+// console.log(deepObj);
+
+//WAC for deep copy  -> recursion
+
+// let student1= {
+//   nae: 'A',
+//   age: 22,
+//   strea:'cse',
+//   subject:['algo','ds','networking','dbms']
+    
+// }
+
+// let student2 = { ...student1 };
+
+//this in functions 
+//this keyword's value depends on how a function is called. this->obj,arr,function
+
+//why dow use this ?
+
+// let user1 = {
+//   fullName: "Abhishek Goel",
+// };
+// let user2 = {
+//   fullName: "Shubham Shinde",
+// };
+
+// function meet1() {
+//   console.log(`Hello ${user1.fullName}`);
+// }
+
+// function meet2() {
+//   console.log(`Hello ${user2.fullName}`);
+// }
+
+// meet1();
+// meet2();
+
+// function meet() {
+//   console.log(`Hello ${this.fullName}`);
+// }
+
+// user1.fn = meet;
+// user2.fn = meet;
+
+// console.log(user1);
+// user1.fn()
+// user2.fn()
+
+//<-------golden rules-------->
+// 1. the value of 'this' is evaluated during run Time
+// 2. value of 'this' depends from where it is called
+// 3. 'this' points to that obj from where the function is being called
+// 4. arr,obj,fn are all passed by referrence
+
+//this-> to obj before '.'
+
+function type1() {
+  console.log(`I love ${this.name123}`);
+}
+// var name123 = 'JS'; // i love js
+let name123 = 'JS'; // i love ud
+// {
+//   let name123 = 'JS'; // i love ud
+// }
+type1(); //-> if fn is called globally , this-> window obj
 
 
+//1. conventional function
+
+// function meet() {
+//   console.log(`hello ${this.name}`);
+// }
+
+// meet();
+
+//2.
+ 
