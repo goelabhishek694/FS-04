@@ -505,34 +505,34 @@
 
 //why dow use this ?
 
-// let user1 = {
-//   fullName: "Abhishek Goel",
-// };
-// let user2 = {
-//   fullName: "Shubham Shinde",
-// };
+let user1 = {
+  fullName: "Abhishek Goel",
+};
+let user2 = {
+  fullName: "Shubham Shinde",
+};
 
-// function meet1() {
-//   console.log(`Hello ${user1.fullName}`);
-// }
+function meet1() {
+  console.log(`Hello ${user1.fullName}`);
+}
 
-// function meet2() {
-//   console.log(`Hello ${user2.fullName}`);
-// }
+function meet2() {
+  console.log(`Hello ${user2.fullName}`);
+}
 
-// meet1();
-// meet2();
+meet1();
+meet2();
 
-// function meet() {
-//   console.log(`Hello ${this.fullName}`);
-// }
+function meet() {
+  console.log(`Hello ${this.fullName}`);
+}
 
-// user1.fn = meet;
-// user2.fn = meet;
+user1.fn = meet;
+user2.fn = meet;
 
-// console.log(user1);
-// user1.fn()
-// user2.fn()
+console.log(user1);
+user1.fn()
+user2.fn()
 
 //<-------golden rules-------->
 // 1. the value of 'this' is evaluated during run Time
@@ -542,15 +542,15 @@
 
 //this-> to obj before '.'
 
-function type1() {
-  console.log(`I love ${this.name123}`);
-}
-// var name123 = 'JS'; // i love js
-let name123 = 'JS'; // i love ud
-// {
-//   let name123 = 'JS'; // i love ud
+// function type1() {
+//   console.log(`I love ${this.name123}`);
 // }
-type1(); //-> if fn is called globally , this-> window obj
+// // var name123 = 'JS'; // i love js
+// let name123 = 'JS'; // i love ud
+// // {
+//   // let name123 = 'JS'; // i love ud
+// // }
+// type1(); //-> if fn is called globally , this-> global obj
 
 
 //1. conventional function
@@ -559,7 +559,190 @@ type1(); //-> if fn is called globally , this-> window obj
 //   console.log(`hello ${this.name}`);
 // }
 
-// meet();
+// meet(); this->global obj
 
 //2.
+
+// function type2() {
+//    console.log(this.fname);
+// }
+
+// var obj = {
+//   fname: "Abhishek",
+//   type2: function () {
+//     console.log(this.fname);
+//   }
+// }
  
+// obj.type2();
+
+//3.
+var food = 'Pizza';
+var obj = {
+  food: 'pasta',
+  eat: function () {
+    console.log(`i like to eat ${this.food}`);
+  }
+}
+
+var foo = obj.eat;
+foo();
+
+//4.
+let length = 1;
+function square() {
+  let cb = function () {
+    console.log(this.length * this.length);
+  }
+  setTimeout(cb, 3000);
+}
+
+var obj = {
+  length: 3,
+  square
+}
+
+// console.log(obj);
+
+obj.square();
+
+
+//5. 
+function Name(fName, lName) {
+  this.firstName = fName;
+  this.lastName = lName;
+}
+
+// class Name{
+//   constructor() {
+//     this
+//   }
+// }
+var obj = new Name("MS", "Dhoni");
+console.log(obj);
+//js creates a new object -> {} ->4k
+//js passess the object's referrence to the fn 
+//this->4k->{}
+
+
+
+let food1 = {
+  continent: 'Italy',
+  name2: 'Pizza',
+  say() {
+    console.log(this);
+    let favFood = function () {
+      console.log(this.name2); //ud
+    };
+    favFood(); //this->window
+  }
+}
+
+food1.say() 
+
+//arrow functions -> they do not have their own 'this' keyword , so they refer the 'this' keyword of their outer scope
+
+let food2 = {
+  continent: "Italy",
+  name2: "Pizza",
+  say() {
+    console.log(this);
+    let favFood = ()=>{
+      console.log(this.name2); //pizza
+    };
+    favFood(); //this->window
+  },
+};
+
+food2.say();
+
+let group = {
+  title: 'picnic',
+  students: ['Nidhi', 'Abhishek', 'Rajnikant', 'Renuka'],
+  list() {
+    let cb=function(student){
+      console.log(`${student} is going on a ${this.title}`);
+    }
+    this.students.forEach(cb)
+  }
+}
+
+group.list();
+
+//call 
+// let player1 = {
+//   fName: "Rahul",
+//   lName: "Dravid",
+//   welcome: function () {
+//     console.log(this.fName + " " + this.lName);
+//   },
+// };
+
+// player1.welcome();
+
+let player2 = {
+  fName:"Sachin",
+  lName:"Tendulkar"
+}
+
+let player3 = {
+  fName: "Kapil",
+  lName: "Dev",
+};
+
+//function borrowing
+// player1.welcome()//-> rahul dravid
+// console.log(player2.welcome)//ud
+// player2.welcome()
+//somehow my this->player2 then  -> sachin tendulkar
+//pls call welcome function from player1 object , but call it with it's 'this' pointing to player2 object
+// player1.welcome.call(player2);
+
+//parameters from call method
+function welcome(...arr) {
+  console.log(arr);
+  console.log(`Welcome ${this.fName} ${this.lName}
+    Email: ${arr[0]}
+    Age: ${arr[1]}`);
+}
+//name of object to which 'this' points to, n number of arguments
+welcome.call(player2, "masterblaster@gmail.com",50);
+
+// //apply
+// let argsArr = ["kd83@gmail.com", 55];
+// welcome.apply(player3, argsArr);
+// welcome()
+
+//bind
+//as soon as we call method(call,apply), the function s called.
+let welcomeSachin = welcome.bind(player2, "masterblaster@gmail.com", 50);
+// a new copy of welcome function is created in which this-> player2 . then this copy is returned//bind returns a function in which the function is explicitly is pointing to a obj that we want it to . 
+welcomeSachin();
+
+
+// this->player2
+// function welcomeCopy(...arr) {
+//   console.log(arr);
+//   console.log(`Welcome ${this.fName} ${this.lName}
+//     Email: ${arr[0]}
+//     Age: ${arr[1]}`);
+// }
+
+//
+
+// let group = {
+//   title: "picnic",
+//   students: ["Nidhi", "Abhishek", "Rajnikant", "Renuka"],
+//   list() {
+//     let cb = function (student) {
+//       console.log(`${student} is going on a ${this.title}`);
+//     };
+//     cbBinded = cb.bind(group);
+//     this.students.forEach(cbBinded);
+//   },
+// };
+
+// group.list();
+
+
+
