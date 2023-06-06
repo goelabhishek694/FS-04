@@ -5,10 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning JS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>FS-04</h1>
+    <h1>FS-&nbsp;04 &copy; &reg; &pound;</h1>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        var canvas=document.getElementById('myCanvas');
+        var context=canvas.getContext('2d');
+        var x=canvas.width/2;
+        var y=canvas.height/2;
+        var radius=100;
+       
+        context.beginPath();
+        context.arc(x,y,radius,0,2*Math.PI,false);
+         context.fillStyle = 'red'; //inside colour of figure
+         context.fill(); // circle is now filled with fill style colour
+            context.linWeidth = 5;
+            context.strokeStyle=`#003300`
+            context.stroke()
+
+    </script>
 </body>
-<!-- <script src="./Day2.js"></script> -->
 <script src="./IQ.js"></script>
 </html>
+
+<input/>
+<input></input>
+
+<br/>

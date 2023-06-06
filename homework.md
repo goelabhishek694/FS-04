@@ -12,7 +12,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://www.freecodecamp.org/news/regular-expressions-for-beginners/
 
-
 29/05/2023
 
 https://javascript.info/localstorage
@@ -20,3 +19,7 @@ https://javascript.info/localstorage
 30/05/2023
 
 https://docs.google.com/document/d/1nySZjqYERods4kQA8hMuYn9M-Cg7u0h1alT1GBjDTHU/edit
+
+06/06/2023
+
+https://blog.logrocket.com/how-browser-rendering-works-behind-scenes/
