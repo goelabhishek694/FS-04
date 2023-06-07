@@ -744,5 +744,28 @@ welcomeSachin();
 
 // group.list();
 
+//polyfill for bind
+var car = {
+  name: 'Thar',
+  brand:'Mahindra'
+}
 
+var car2={
+  name:'G-Wagon',
+  brand:'Mercedes'
+}
+
+function carDescription(){
+  console.log(`I bought a new ${this.brand} ${this.name}`);
+}
+
+carDescription()
+carDescription.call(car);
+
+// let bindedCarDescription = carDescription.bind(car2);
+// bindedCarDescription()
+
+//prototype->
+let b=[1,2,3,4,5];
+b.push(6);
 

@@ -23,3 +23,13 @@ https://docs.google.com/document/d/1nySZjqYERods4kQA8hMuYn9M-Cg7u0h1alT1GBjDTHU/
 06/06/2023
 
 https://blog.logrocket.com/how-browser-rendering-works-behind-scenes/
+
+07/06/2023
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+https://flukeout.github.io/
+
+https://cssgridgarden.com/
+
+https://flexboxfroggy.com/
