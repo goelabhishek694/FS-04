@@ -33,3 +33,7 @@ https://flukeout.github.io/
 https://cssgridgarden.com/
 
 https://flexboxfroggy.com/
+
+08/06/2023
+
+https://betterprogramming.pub/why-dont-react-state-updates-reflect-immediately-9041c4377385
