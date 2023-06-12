@@ -625,6 +625,9 @@ console.log(obj);
 //this->4k->{}
 
 
+// const arr = [10, 20, 30, 40]
+// const obj = { ...arr } {0:10,1:20,2:30,3:40}
+
 
 let food1 = {
   continent: 'Italy',
