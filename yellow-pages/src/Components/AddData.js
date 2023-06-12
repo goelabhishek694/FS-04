@@ -10,16 +10,28 @@ function AddData() {
     gender: "",
   }]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e,index) => {
     const { name, value } = e.target;
       console.log(name, value);
-    //   const updatedRows = [...rows];
-    //   updatedRow[name] = value;
-    //   setRows(updatedRow);
+      const updatedRows = [...rows];
+      updatedRows[index][name] = value;
+      setRows(updatedRows);
   };
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = (e,index) => {
+        e.preventDefault();
+        console.log(rows);
+        const row = rows[index];
+        localStorage.setItem(row.uid,JSON.stringify(row))
+    }
+
+    const handleDelete = (e,index) => {
+        e.preventDefault();
+        const row = rows[index];
+        const uid = row.uid;
+        const updatedRows = rows.filter(row => row.uid != uid)
+        setRows(updatedRows);
+        localStorage.removeItem(row.uid);
     }
     const handleAddRow = () => {
         setRows([...rows, {
@@ -45,75 +57,79 @@ function AddData() {
           </tr>
         </thead>
         <tbody>
-                  {rows.map((row) =>
-                      (
-                          <tr>
-                              <td>
-                                  <input
-                                      type="text"
-                                      name="userName"
-                                      value={row.userName}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                              <td>
-                                  <input
-                                      type="number"
-                                      name="age"
-                                      value={row.age}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                              <td>
-                                  <input
-                                      type="text"
-                                      name="dob"
-                                      value={row.dob}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                              <td>
-                                  <input
-                                      type="text"
-                                      name="uid"
-                                      value={row.uid}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                              <td>
-                                  <input
-                                      type="number"
-                                      name="mobile"
-                                      value={row.mobile}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                              <td>
-                                  <input
-                                      type="text"
-                                      name="gender"
-                                      value={rows.gender}
-                                      onChange={(e) => {
-                                          handleInputChange(e);
-                                      }}
-                                  />
-                              </td>
-                          </tr>
-                  )
-                  )}
+          {rows.map((row, index) => (
+            <tr key={index}>
+              <td>
+                <input
+                  type="text"
+                  name="userName"
+                  value={row.userName}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="age"
+                  value={row.age}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="dob"
+                  value={row.dob}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="uid"
+                  value={row.uid}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="mobile"
+                  value={row.mobile}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="gender"
+                  value={rows.gender}
+                  onChange={(e) => {
+                    handleInputChange(e, index);
+                  }}
+                />
+              </td>
+              <td>
+                <button onClick={(e) => handleSubmit(e, index)}>Submit</button>
+              </td>
+              <td>
+                <button onClick={(e) => handleDelete(e, index)}>Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <button onClick={handleSubmit}>Submit</button>
+
       <button onClick={handleAddRow}>Add Row</button>
     </div>
   );
