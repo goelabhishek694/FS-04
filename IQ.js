@@ -784,5 +784,46 @@ let bindedFn = carDescription.myBind(car2,'10th September 2028', '4crore')
 bindedFn()
 
 
+let arr = [10, 20, 30, 40];
+let ans=arr.map(cb)
+function cb(ele) {
+  return 2*ele
+}
+console.log(ans); //[20,40,60,80]
+
+Array.prototype.myMap = function (cb) {
+  var arr = [];
+  for (let i = 0; i < this.length; i++){
+    arr.push(cb(this[i],i))
+  }
+  return arr;
+}
+
+let myans = arr.myMap(cb)
+console.log('mymap',myans);
+
+arr.filter(cbf)
+function cbf(ele) {
+  if (ele > 10) {
+    return ele
+  }
+  //return undefined
+}
+Array.prototype.myFilter = function (cb) {
+  var arr = [];
+  for (let i = 0; i < this.length; i++) {
+
+    if (cb(this[i])) {
+      arr.push(this[i])
+    };
+  }
+  return arr;
+};
+
+let filteredArr = arr.myFilter(cbf);
+console.log(filteredArr);
+
+// write a polyfill for push method / indexOf 
+
 
 
