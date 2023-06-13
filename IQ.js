@@ -758,8 +758,8 @@ var car2={
   brand:'Mercedes'
 }
 
-function carDescription(){
-  console.log(`I bought a new ${this.brand} ${this.name}`);
+function carDescription(...args){
+  console.log(`I bought a new ${this.brand} ${this.name} on ${args[0]} for INR ${args[1]}`);
 }
 
 carDescription()
@@ -770,5 +770,19 @@ carDescription.call(car);
 
 //prototype->
 let b=[1,2,3,4,5];
-b.push(6);
+b.push(6); 
+
+Function.prototype.myBind = function (...args) {
+  let fnObj = this; //carDescription fn 
+  let params = args.slice(1);
+  return function () {
+    fnObj.apply(args[0],params); 
+  }
+}
+
+let bindedFn = carDescription.myBind(car2,'10th September 2028', '4crore')
+bindedFn()
+
+
+
 
