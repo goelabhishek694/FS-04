@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 
 function Email() {
     const [currentSelection,setCurrentSelection]=useState('inbox');
-    const [inbox,setInbox]=useState([{}]);
-    const [spam,setSpam]=useState([{}]);
-    const [emails,setEmails]=useState([{}]);
-    const[content,setContent]=useState({});
+    // const [inbox,setInbox]=useState([{}]);
+    // const [spam,setSpam]=useState([{}]);
+    // const [emails,setEmails]=useState([{}]);
+    const[content,setContent]=useState([{}]);
 
     const handleSelectionClick=(selection)=>{
         setCurrentSelection(selection);
+        setContent([{}])
         console.log(selection);
     }
     //if a fn is called in UI then never setState over their 
@@ -54,6 +55,7 @@ function Email() {
     const handleMailContent=(id)=>{
         //get specific email using currentSelection and id
         const data=switchParam(currentSelection).filter((emailObj)=>emailObj['mId']==id)
+        console.log(data);
         setContent(data);
     }
     
@@ -69,7 +71,7 @@ function Email() {
             {
                     // switchParam(currentSelection)?(
                         switchParam(currentSelection).map(emailObj=>(
-                            <div onClick={()=>handleMailContent(emailObj.mId)} style={{border:'5px solid red'}}>
+                            <div onClick={()=>handleMailContent(emailObj.mId)} style={{border:'5px solid red',height:'100px'}}>
                                 <h3>{emailObj.subject}</h3>
                                 <p>{emailObj.content.slice(0,20)+'...'}</p>
                             </div>
@@ -83,9 +85,9 @@ function Email() {
         <div>
             {
                 content?(
-                    <div>
-                        <h3>{content.subject}</h3>
-                        <p>{content.content}</p>
+                    <div style={{border:'5px solid red',height:'400px'}}>
+                        <h3>{content[0].subject}</h3>
+                        <p>{content[0].content}</p>
                     </div>
                 ):(<h1>No Mails to Show</h1>)
             }
