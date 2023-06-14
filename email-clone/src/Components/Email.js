@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 
 function Email() {
     const [currentSelection,setCurrentSelection]=useState('inbox');
+    const [inbox,setInbox]=useState([{}]);
+    const [spam,setSpam]=useState([{}]);
     const [emails,setEmails]=useState([{}]);
+    const[content,setContent]=useState({});
 
     const handleSelectionClick=(selection)=>{
         setCurrentSelection(selection);
         console.log(selection);
     }
-
+    //if a fn is called in UI then never setState over their 
     const switchParam=(headerType)=>{
         switch(headerType){
             case('inbox'):
@@ -47,6 +50,13 @@ function Email() {
                     return[]
         }
     }
+
+    const handleMailContent=(id)=>{
+        //get specific email using currentSelection and id
+        const data=switchParam(currentSelection).filter((emailObj)=>emailObj['mId']==id)
+        setContent(data);
+    }
+    
   return (
     <div>
         <div>
@@ -59,7 +69,7 @@ function Email() {
             {
                     // switchParam(currentSelection)?(
                         switchParam(currentSelection).map(emailObj=>(
-                            <div style={{border:'5px solid red'}}>
+                            <div onClick={()=>handleMailContent(emailObj.mId)} style={{border:'5px solid red'}}>
                                 <h3>{emailObj.subject}</h3>
                                 <p>{emailObj.content.slice(0,20)+'...'}</p>
                             </div>
@@ -68,6 +78,16 @@ function Email() {
                     // (<h1>Data not found</h1>)
                 
                 
+            }
+        </div>
+        <div>
+            {
+                content?(
+                    <div>
+                        <h3>{content.subject}</h3>
+                        <p>{content.content}</p>
+                    </div>
+                ):(<h1>No Mails to Show</h1>)
             }
         </div>
     </div>
