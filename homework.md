@@ -37,3 +37,6 @@ https://flexboxfroggy.com/
 08/06/2023
 
 https://betterprogramming.pub/why-dont-react-state-updates-reflect-immediately-9041c4377385
+
+14/06/2023
+https://www.npmjs.com/package/json-server
